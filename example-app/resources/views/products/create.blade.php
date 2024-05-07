@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Create</h1>
+    @extends('layout.layout')
+    @section('content')   
+    
+    <main>
+    <h1>Créer emplois</h1>
     <form method="post" action="{{route('product.store')}}">
         @csrf
         @method('post')
@@ -53,5 +49,6 @@
             <input type="submit" value="Save a New  Product"/>
         </div>
     </form>
-</body>
-</html>
+
+</main>
+    @endsection

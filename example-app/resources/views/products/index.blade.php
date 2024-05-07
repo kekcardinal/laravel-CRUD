@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Products</h1>
+@extends('layout.layout')
+    @section('content')   
+
+    <main>
+    <h1 class="titre">Emplois</h1>
 
     <div>
-        <a href="{{route('product.create')}}">Creer un article</a>
+       
     </div>
     <div>
         @if(session()->has('success'))
@@ -18,35 +14,61 @@
         @endif
 
     </div>
-    <div style="display:flex; justify-content:space-between; width:fit-content; row-gap:30px; column-gap:25px; ">
+
+    <div class="conteneur-produits-titre">
+    <div class="rows-produits">
+        <div>
+           Nom
+        </div>
+        <div>
+          Quantité
+        </div>
+        <div>
+          Prix
+        </div>
+        <div>
+           Description
+        </div>
+        <div>
+           Edit
+        </div>
+        <div>
+           Supprimer
+        </div>
+    </div>
+</div>
+    <div class="conteneur-produits">
         @foreach($products as $product )
-        <div style="padding:10px; margin:10px; background-color:beige; border-radius:25px;">
-        <div style="font-size:32pt;">
+        <div class="rows-produits">
+        <!-- <div>
             ID={{$product->id}}
+        </div> -->
+        <div>
+            {{$product->name}}
         </div>
-        <div style="font-size:32pt;">
-            Name={{$product->name}}
+        <div>
+            {{$product->qty}}
         </div>
-        <div style="font-size:32pt;">
-            Quantity={{$product->qty}}
+        <div>
+           {{$product->price}}
         </div>
-        <div style="font-size:32pt;">
-            Price={{$product->price}}
-        </div>
-        <div style="font-size:32pt;">
-            Description={{$product->description}}
+        <div>
+            {{$product->description}}
         </div>
 
-        <div style="font-size:32pt;">
+        <div>
        <a href="{{route('product.edit',['product' => $product])}}"> Edit </a>
         </div>  
+        <div>
         <form method="post" action="{{route('product.destroy', ['product' => $product])}}">
             @csrf
             @method('delete')
             <input type="submit" value="Delete">
         </form>
+</div>
         </div>
         @endforeach
         </div>
-</body>
-</html>
+
+</main>
+@endsection
