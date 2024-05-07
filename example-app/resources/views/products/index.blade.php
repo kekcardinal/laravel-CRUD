@@ -2,7 +2,7 @@
     @section('content')   
 
     <main>
-    <h1 class="titre">Emplois</h1>
+    <h1 class="titre"> Emplois</h1>
 
     <div>
        
