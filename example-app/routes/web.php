@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomAuthController ;
 use App\Http\Controllers\LocalizationController ;
+use App\Http\Controllers\ArticleController;
 
 Route::get('/', [ProductController::class, 'home'])->name('product.home');
 
@@ -27,4 +28,7 @@ Route::post('/registration-store', [CustomAuthController::class, 'store'])->name
 Route::get('/logout', [CustomAuthController::class, 'logout'])->name('logout');
 
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
+
+
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 
