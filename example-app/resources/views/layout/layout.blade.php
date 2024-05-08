@@ -24,8 +24,8 @@
                 <!-- You may choose to hide the "Créer un emploi" link for guests too -->
             @endif
 
-            <li><a href="{{route('lang','en')}}">EN</a></li>
-            <li><a href="{{route('lang','fr')}}">FR</a></li>
+            <li class="margin_left_auto @if(session('locale') == 'en') lang_active @endif"><a href="{{route('lang','en')}}">EN</a></li>
+            <li class="@if(session('locale') == 'fr') lang_active @endif"><a href="{{route('lang','fr')}}">FR</a></li>
         </ul>
     </nav>
     

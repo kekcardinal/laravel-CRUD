@@ -81,3 +81,11 @@ main {
     justify-content: center;
     text-align: center;
 }
+
+.margin_left_auto{
+    margin-left:auto;
+}
+
+.lang_active{
+    background-color: red;
+}
