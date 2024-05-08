@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>test</title>
     <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
+    @php $locale = session()->get('locale'); @endphp
 </head>
 <body>
     <nav>
@@ -14,14 +15,17 @@
             @if(Auth::check())
                 <li>Bonjour {{ $user->name }}</li>
                 <li><a href="{{ route('logout') }}">Se déconnecter</a></li>
-                <li><a href="{{ route('product.index') }}">Accueil</a></li>
                 <li><a href="{{ route('product.create') }}">Créer un emploi</a></li>
             @else
-                <li><a href="{{ route('login') }}">Se connecter</a></li>
-                <li><a href="{{ route('user.registration') }}">Créer un compte</a></li>
+                 <li><a href="{{ route('product.home') }}">@lang('lang.home')</a></li>
+                <li><a href="{{ route('login') }}">@lang('lang.connexion')</a></li>
+                <li><a href="{{ route('user.registration') }}">@lang('lang.create_account')</a></li>
                 {{-- <li><a href="{{ route('product.index') }}">Accueil</a></li> --}}
                 <!-- You may choose to hide the "Créer un emploi" link for guests too -->
             @endif
+
+            <li><a href="{{route('lang','en')}}">EN</a></li>
+            <li><a href="{{route('lang','fr')}}">FR</a></li>
         </ul>
     </nav>
     

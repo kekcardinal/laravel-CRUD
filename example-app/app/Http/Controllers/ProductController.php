@@ -12,7 +12,12 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     //
+    public function home(){
 
+        $products = Product::all();
+        
+        return view('products.home',  ['products' => $products]);
+    }
     public function index(){
 
         if (Auth::check()) {

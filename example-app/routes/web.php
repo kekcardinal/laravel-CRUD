@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomAuthController ;
+use App\Http\Controllers\LocalizationController ;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProductController::class, 'home'])->name('product.home');
 
 Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 
@@ -26,3 +25,6 @@ Route::get('/registration', [CustomAuthController::class, 'create'])->name('user
 Route::post('/registration-store', [CustomAuthController::class, 'store'])->name('user.store');
 
 Route::get('/logout', [CustomAuthController::class, 'logout'])->name('logout');
+
+Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
+
