@@ -29,8 +29,15 @@ class ProductController extends Controller
     }
 
     public function edit(Product $product){
+
+        if (Auth::check()) {
             $user = Auth::user();
         return view('products.edit', ['product' => $product, 'user' => $user]);
+        }
+        else
+        {
+            return redirect(route('login'))->withErrors('Vous n\'etes pas autorisé à accéder');
+        }
     }
 
     public function  destroy(Product $product){

@@ -31,4 +31,8 @@ Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('la
 
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+Route::get('/articles/create', [ArticleController::class, 'create'])->name('article.create');
+Route::post('/articles', [ArticleController::class, 'store'])->name('article.store');
 
+Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('article.edit');
+Route::put('/articles/{id}/update', [ArticleController::class, 'update'])->name('article.update');
