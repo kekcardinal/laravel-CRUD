@@ -123,4 +123,16 @@ class ArticleController extends Controller
                 return redirect()->route('articles')->withErrors('You are not authorized to update this article.');
             }
         }
+
+        public function  destroy(Article $article){
+            if (Auth::check()) {
+            $article->delete();
+    
+            return redirect(route('articles'))->with('success', 'Product deleted successfully');
+            }
+            else
+            {
+                return redirect(route('login'))->withErrors('Vous n\'etes pas autorisé à accéder');
+            }
+        }
 }

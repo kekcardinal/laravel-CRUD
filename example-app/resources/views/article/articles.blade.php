@@ -3,7 +3,7 @@
 @section('content')
 
 <main>
-    <h1 class="titre">Articles vedettes</h1>
+    <h1 class="titre">Projets vedette</h1>
 
     <div class="conteneur-articles">
     @foreach ($articles as $article)
@@ -21,8 +21,12 @@
             @endif
 
             @auth {{-- Only show the edit button if the user is authenticated --}}
-            <a href="{{ route('article.edit', ['id' => $article->id]) }}">Edit</a>
-
+            <a href="{{ route('article.edit', ['article' => $article]) }}">Edit</a>
+            <form method="post" action="{{route('article.destroy', ['article' => $article])}}">
+                @csrf
+                @method('delete')
+                <input type="submit" value="Delete">
+            </form>
                 {{-- <h1>{{$article->id}}</h1> --}}
             @endauth
         </div>
@@ -30,4 +34,14 @@
     </div>
 
 </main>
+@endsection
+
+@section('scripts')
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 @endsection

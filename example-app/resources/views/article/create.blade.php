@@ -42,6 +42,16 @@
 
     <button type="submit">Créer l'article</button>
 </form>
-
+<textarea id="editor"></textarea>
 </main>
+@endsection
+
+@section('scripts')
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 @endsection

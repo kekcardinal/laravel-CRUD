@@ -5,8 +5,8 @@
 <main>
     <h1>Modifier l'article</h1>
     <h1>{{$article->id}}</h1>
-    {{-- <form action="{{ route('article.update', ['id' => $article->id]) }}" method="POST" enctype="multipart/form-data"> --}}
-        <form>
+    <form action="{{ route('article.update', ['article' => $article]) }}" method="POST" enctype="multipart/form-data">
+        {{-- <form> --}}
         @csrf
         @method('PUT')
 
@@ -45,5 +45,16 @@
         <button type="submit">Modifier l'article</button>
     </form>
 </main>
+<textarea id="edi"
+@endsection
 
+
+@section('scripts')
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 @endsection

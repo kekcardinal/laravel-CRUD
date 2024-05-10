@@ -6,7 +6,7 @@
 
 
     <div class="conteneur-produits-titre">
-        <div class="rows-produits">
+        <div class="header-rows-produits">
             <div>
                Nom
             </div>
@@ -34,11 +34,23 @@
                {{$product->price}}
             </div>
             <div>
-                {{$product->description}}
+                {!!$product->description!!}
             </div>
 
         </div>
         @endforeach
     </div>
+
+    <script>
+        ClassicEditor
+        .create(document.querySelector('#editor'), {
+        autoLink: false // Disable automatic link conversion
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+
     </main>
     @endsection

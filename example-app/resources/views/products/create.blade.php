@@ -1,6 +1,14 @@
     @extends('layout.layout')
     @section('content')   
     
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+
     <main>
     <h1>Créer emplois</h1>
     <form method="post" action="{{route('product.store')}}">
@@ -21,25 +29,25 @@
             <label>
                 Name
             </label>
-            <input type="text" name="name" placeholder="Name"/>
+            <textarea id="#editor" class="ckeditor" type="text" name="name" placeholder="Name" required></textarea>
         </div>
         <div>
             <label>
                 Quantity
             </label>
-            <input type="text" name="qty" placeholder="Qty" />
+            <input type="text" name="qty" placeholder="Qty"  required/>
         </div>
         <div>
             <label>
                 Price
             </label>
-            <input type="text" name="price" placeholder="Price"/>
+            <input type="text" name="price" placeholder="Price" required/>
         </div>
         <div>
             <label>
                 Description
             </label>
-            <input type="text" name="description" placeholder="Description"/>
+            <textarea id="editor" type="text" name="description" placeholder="Description"></textarea>
         </div>
 
         <div>
@@ -52,3 +60,18 @@
 
 </main>
     @endsection
+
+    @section('scripts')
+<script>
+    ClassicEditor
+    .create(document.querySelector('#editor'), {
+        link: {
+            defaultProtocol: 'http://',
+            addTargetToExternalLinks: true
+        }
+    })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+@endsection

@@ -41,9 +41,15 @@ class ProductController extends Controller
     }
 
     public function  destroy(Product $product){
+        if (Auth::check()) {
         $product->delete();
 
         return redirect(route('product.index'))->with('success', 'Product deleted successfully');
+        }
+        else
+        {
+            return redirect(route('login'))->withErrors('Vous n\'etes pas autorisé à accéder');
+        }
     }
     public function update(Product $product, Request  $request){
         $data = $request->validate([

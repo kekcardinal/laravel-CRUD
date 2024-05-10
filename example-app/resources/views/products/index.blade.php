@@ -16,7 +16,7 @@
     </div>
 
     <div class="conteneur-produits-titre">
-    <div class="rows-produits">
+    <div class="header-rows-produits">
         <div>
            Nom
         </div>
@@ -53,7 +53,7 @@
            {{$product->price}}
         </div>
         <div>
-            {{$product->description}}
+            {!!$product->description!!}
         </div>
 
         <div>
@@ -71,4 +71,21 @@
         </div>
 
 </main>
+@endsection
+
+
+
+@section('scripts')
+<script>
+    ClassicEditor
+    .create(document.querySelector('#editor'), {
+        link: {
+            defaultProtocol: 'http://',
+            addTargetToExternalLinks: true
+        }
+    })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 @endsection
