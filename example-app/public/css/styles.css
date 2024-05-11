@@ -1,12 +1,22 @@
-body {
+html,body {
     background-color: white;
-}
-
-* {
-    color: black;
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+}
+
+ul{
+    margin:0;
+}
+*{
+    box-sizing:border-box;
+}
+
+html{
+    color: black;
+    padding: 0px;
+    margin: 0px;
+
     font-family: Arial, Helvetica, sans-serif;
 }
 
